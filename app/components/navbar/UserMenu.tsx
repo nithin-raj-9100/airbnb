@@ -14,11 +14,6 @@ const UserMenu = () => {
 
 	console.log(isOpen);
 
-	// const handleOpen = () => {
-	// 	setisOpen(!isOpen);
-	// 	console.log(isOpen);
-	// };
-
 	return (
 		<div className='relative'>
 			<div className='flex flex-row items-center gap-3'>

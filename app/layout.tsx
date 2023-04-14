@@ -1,7 +1,10 @@
-import Modal from './components/models/Modal';
+import { Nunito } from 'next/font/google';
+
+// [ ]internal importss
+import ToasterProvider from './providers/ToasterProvider';
+import RegisterModal from './components/models/RegisterModal';
 import Navbar from './components/navbar/Navbar';
 import './globals.css';
-import { Nunito } from 'next/font/google';
 
 export const metadata = {
 	title: 'Holiday Homes & Apartment Rentals - Airbnb - Airbnb',
@@ -20,7 +23,8 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body className={fonts}>
-				<Modal isOpen title='Hello world' actionLabel='Submit' />
+				<ToasterProvider />
+				<RegisterModal />
 				<Navbar />
 				{children}
 			</body>

@@ -4,7 +4,6 @@ import { IoMdClose } from 'react-icons/io';
 import Button from '../Button';
 
 type ModalProps = {
-	children: React.ReactNode;
 	isOpen?: boolean;
 	onClose?: () => void;
 	onSubmit?: () => void;
@@ -109,6 +108,7 @@ const Modal: React.FC<ModalProps> = ({
 										onClick={handleSubmit}
 									/>
 								</div>
+								{footer}
 							</div>
 						</div>
 					</div>

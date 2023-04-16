@@ -38,7 +38,9 @@ const RegisterModal = () => {
 					.then(() => registerModel.onClose());
 				console.log(response);
 			} catch (error: any) {
-				toast.error('Something went wrong');
+				toast.error('Something went wrong', {
+					duration: 3000,
+				});
 			} finally {
 				setIsLoading(false);
 			}
@@ -49,10 +51,7 @@ const RegisterModal = () => {
 	const body = (
 		<>
 			<div className='flex flex-col gap-4'>
-				<Heading
-					title='Welcome to Airbnb'
-					subtitle='Create an account to continue'
-				/>
+				<Heading title='Welcome to Airbnb' />
 				<Input
 					id='email'
 					label='Email'
@@ -105,14 +104,7 @@ const RegisterModal = () => {
 					<div className=''>Already have an account ? </div>
 					<div
 						className='inline-block cursor-pointer text-neutral-800
-						transition-all  duration-200 hover:underline
-						'
-						// style={{
-						// 	backgroundImage:
-						// 		'linear-gradient(to right, currentColor 100%, currentColor 0)',
-						// 	backgroundPosition: '0 100%',
-						// 	backgroundRepeat: 'repeat-x',
-						// }}
+						transition-all  duration-200 hover:underline'
 						onClick={registerModel.onClose}
 					>
 						Login
@@ -132,6 +124,7 @@ const RegisterModal = () => {
 			onSubmit={handleSubmit(onSubmit)}
 			body={body}
 			footer={footer}
+			secondaryAction={() => {}}
 		/>
 	);
 };

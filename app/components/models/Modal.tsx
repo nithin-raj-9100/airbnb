@@ -1,6 +1,8 @@
 'use client';
 import { useCallback, useEffect, useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
+
+// [ ]internal imports
 import Button from '../Button';
 
 type ModalProps = {
@@ -78,6 +80,7 @@ const Modal: React.FC<ModalProps> = ({
 						<div className='translate w-fulll relative flex h-full flex-col rounded-lg border-0 bg-white shadow-lg outline-none focus:outline-none md:h-auto lg:h-auto'>
 							{/* [ ]header  */}
 							<div className='relative flex items-center justify-center rounded-t border-b-[1px]  p-6'>
+								{/* close button */}
 								<button
 									onClick={handleClose}
 									className='absolute left-9 border-0 p-1 transition hover:opacity-70 '
@@ -88,11 +91,14 @@ const Modal: React.FC<ModalProps> = ({
 									{title}
 								</div>
 							</div>
+
 							{/* [ ]body */}
 							<div className='relative flex-auto p-6'>{body}</div>
 							{/* [ ]footer */}
+
 							<div className='flex flex-col gap-2 p-6'>
 								<div className='flex w-full flex-row items-center gap-4'>
+									{/* @ts-ignore */}
 									{secondaryAction &&
 										secondaryActionLabel && (
 											<Button

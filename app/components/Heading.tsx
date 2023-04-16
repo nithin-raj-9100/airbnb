@@ -2,21 +2,12 @@
 
 type Props = {
 	title: string;
-	subtitle?: string;
-	center?: boolean;
 };
 
-const Heading: React.FC<Props> = ({ title, center, subtitle }) => {
+const Heading: React.FC<Props> = ({ title }) => {
 	return (
-		<div
-			className={`
-		${center ? 'text-center' : 'text-start'}
-	`}
-		>
+		<div className='text-start'>
 			<div className='font-sans text-2xl font-bold'>{title}</div>
-			{/* <div className='mt-2 font-semibold text-neutral-500'>
-				{subtitle}
-			</div> */}
 		</div>
 	);
 };

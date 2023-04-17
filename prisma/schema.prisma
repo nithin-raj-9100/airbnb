@@ -1,0 +1,77 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider     = "mysql"
+    url          = env("DATABASE_URL")
+    relationMode = "prisma"
+}
+
+model User {
+    id             String        @id @default(dbgenerated("uuid_generate_v4()"))
+    name           String?
+    email          String?       @unique
+    emailVerified  DateTime?
+    image          String?
+    hashedPassword String?
+    createdAt      DateTime      @default(now())
+    updatedAt      DateTime      @updatedAt
+    favoriteIds    String
+    accounts       Account[]
+    listings       Listing[]
+    reservations   Reservation[]
+}
+
+model Account {
+    id                String  @id @default(dbgenerated("uuid_generate_v4()"))
+    userId            String
+    type              String
+    provider          String
+    providerAccountId String
+    refresh_token     String?
+    access_token      String?
+    expires_at        Int?
+    token_type        String?
+    scope             String?
+    id_token          String?
+    session_state     String?
+    user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@unique([provider, providerAccountId])
+    @@index([userId])
+}
+
+model Listing {
+    id            String        @id @default(dbgenerated("uuid_generate_v4()"))
+    title         String
+    description   String
+    imageSrc      String
+    createdAt     DateTime      @default(now())
+    category      String
+    roomCount     Int
+    bathroomCount Int
+    guestCount    Int
+    locationValue String
+    userId        String
+    price         Int
+    user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+    reservations  Reservation[]
+
+    @@index([userId])
+}
+
+model Reservation {
+    id         String   @id @default(dbgenerated("uuid_generate_v4()"))
+    userId     String
+    listingId  String
+    startDate  DateTime
+    endDate    DateTime
+    totalPrice Int
+    createdAt  DateTime @default(now())
+    user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    listing    Listing  @relation(fields: [listingId], references: [id], onDelete: Cascade)
+
+    @@index([listingId])
+    @@index([userId])
+}

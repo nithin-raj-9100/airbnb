@@ -9,7 +9,7 @@ datasource db {
 }
 
 model User {
-    id             String        @id @default(dbgenerated("uuid_generate_v4()"))
+    id             String        @id @default(uuid())
     name           String?
     email          String?       @unique
     emailVerified  DateTime?
@@ -24,16 +24,16 @@ model User {
 }
 
 model Account {
-    id                String  @id @default(dbgenerated("uuid_generate_v4()"))
+    id                String  @id @default(uuid())
     userId            String
     type              String
     provider          String
     providerAccountId String
-    refresh_token     String?
-    access_token      String?
+    refresh_token     String? @db.Text
+    access_token      String? @db.Text
     expires_at        Int?
     token_type        String?
-    scope             String?
+    scope             String? @db.Text
     id_token          String?
     session_state     String?
     user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -43,7 +43,7 @@ model Account {
 }
 
 model Listing {
-    id            String        @id @default(dbgenerated("uuid_generate_v4()"))
+    id            String        @id @default(uuid())
     title         String
     description   String
     imageSrc      String
@@ -62,7 +62,7 @@ model Listing {
 }
 
 model Reservation {
-    id         String   @id @default(dbgenerated("uuid_generate_v4()"))
+    id         String   @id @default(uuid())
     userId     String
     listingId  String
     startDate  DateTime

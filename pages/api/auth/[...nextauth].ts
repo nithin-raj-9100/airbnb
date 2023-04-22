@@ -1,13 +1,12 @@
-import type { AuthOptions } from 'next-auth';
+import NextAuth, { AuthOptions } from 'next-auth';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import GithubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
-import Credentials from 'next-auth/providers/credentials';
-
-import prisma from '../../../app/lib/prismadb';
-
 import CredentialsProvider from 'next-auth/providers/credentials';
-import credentials from 'next-auth/providers/credentials';
+import bcrypt from 'bcrypt';
+
+// [ ]internal imports
+import prisma from '../../../app/lib/prismadb';
 
 export const authOptions: AuthOptions = {
 	adapter: PrismaAdapter(prisma),
@@ -21,6 +20,7 @@ export const authOptions: AuthOptions = {
 			clientSecret: process.env.GOOGLE_SECRET as string,
 		}),
 
+		// @ts-ignore
 		CredentialsProvider({
 			name: 'Credentials',
 			credentials: {
@@ -28,12 +28,45 @@ export const authOptions: AuthOptions = {
 				password: { label: 'Password', type: 'password' },
 			},
 
-			//  TODO make pretty errors using react-toastify
-			// @ts-ignore
-			async authorize(credentials) {
-				if (!credentials?.email || credentials?.password)
+			async authorize(credentials: any) {
+				if (!credentials.email || !credentials.password) {
 					throw new Error('Invalid credentials');
+				}
+
+				const user = await prisma.user.findUniqueOrThrow({
+					where: {
+						email: credentials.email,
+					},
+				});
+
+				if (!user || !user.hashedPassword) {
+					throw new Error('invalid credentuials');
+				}
+
+				const isCorrect = await bcrypt.compare(
+					credentials.password,
+					user.hashedPassword,
+				);
+
+				if (!isCorrect) {
+					throw new Error('invalide credentials');
+				}
+
+				// [ ]
+				return user;
 			},
 		}),
+		//  TODO make pretty errors using react-toastify
 	],
+
+	pages: {
+		signIn: '/',
+	},
+	debug: process.env.NODE_ENV === 'development',
+	session: {
+		strategy: 'jwt',
+	},
+	secret: process.env.NEXTAUTH_SECRET,
 };
+
+export default NextAuth(authOptions);

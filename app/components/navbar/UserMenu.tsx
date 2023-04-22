@@ -14,7 +14,7 @@ const UserMenu = () => {
 	const handleOpen = useCallback(() => {
 		setisOpen(open => !open);
 		console.log(isOpen);
-	}, []);
+	}, [isOpen]);
 
 	console.log(isOpen);
 

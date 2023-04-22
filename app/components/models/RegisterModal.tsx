@@ -34,11 +34,12 @@ const RegisterModal = () => {
 			setIsLoading(true);
 			try {
 				const response = await axios
-					.post('/api/auth/register', data)
+					.post('/api/register', data)
 					.then(() => registerModel.onClose());
 				console.log(response);
 			} catch (error: any) {
 				toast.error('Something went wrong');
+				console.log(error);
 			} finally {
 				setIsLoading(false);
 			}

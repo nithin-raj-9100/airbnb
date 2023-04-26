@@ -25,10 +25,11 @@ export default async function RootLayout({
 	const user = await gerUser();
 	return (
 		<html lang='en'>
-			<body className={fonts}>
+			<body className={fonts.className}>
 				<ToasterProvider />
 				<RegisterModal />
 				<LoginModal />
+				{/* @ts-ignore */}
 				<Navbar user={user} />
 				{children}
 			</body>

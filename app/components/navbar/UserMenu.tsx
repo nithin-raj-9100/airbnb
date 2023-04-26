@@ -2,16 +2,17 @@
 import { AiOutlineMenu } from 'react-icons/ai';
 import { useCallback, useState } from 'react';
 import { signOut } from 'next-auth/react';
+import { BiGlobe } from 'react-icons/bi';
 
 // [ ]internal imports
 import Avatar from '../Avatar';
 import MenuItem from './MenuItem';
 import { useRegisterModal } from '@/app/hooks/useRegisterModal  ';
 import { useLoginModal } from '@/app/hooks/useLoginModal  ';
-import { User } from '@prisma/client';
+import { SafeUser } from '@/app/types  ';
 
 type Props = {
-	user?: User | null;
+	user?: SafeUser | null;
 };
 
 const UserMenu: React.FC<Props> = ({ user }) => {
@@ -24,24 +25,24 @@ const UserMenu: React.FC<Props> = ({ user }) => {
 		console.log(isOpen);
 	}, [isOpen]);
 
-	console.log(isOpen);
-
 	return (
 		<div className='relative'>
-			<div className='flex flex-row items-center gap-3'>
+			<div className='flex flex-row items-center justify-center gap-4'>
 				<div
 					onClick={() => {}}
-					className='hidden cursor-pointer rounded-full px-4 py-3 text-sm font-semibold transition hover:bg-white md:block '
+					className='hidden cursor-pointer rounded-full px-4 py-3 text-center text-sm font-semibold transition hover:bg-white md:block '
 				>
-					Airbnb Your Home
+					Airbnb your home
 				</div>
+				{/* TODO */}
+				{/* <BiGlobe size={19} className=''  /> */}
 				<div
 					onClick={handleOpen}
-					className='flex cursor-pointer flex-row items-center gap-3 rounded-full border-[1px] border-neutral-200 p-4 transition hover:shadow-md md:px-2 md:py-1'
+					className='flex cursor-pointer flex-row items-center gap-3 rounded-full border-[1px] border-neutral-200 p-3 transition hover:shadow-md md:px-2 md:py-1'
 				>
 					<AiOutlineMenu />
 					<div className='hidden md:block'>
-						<Avatar />
+						<Avatar src={user?.image} />
 					</div>
 				</div>
 			</div>
@@ -65,7 +66,7 @@ const UserMenu: React.FC<Props> = ({ user }) => {
 								/>
 								<MenuItem
 									onClick={() => {}}
-									label='Airbnb Your Home'
+									label='Airbnb your Home'
 								/>
 								<hr />
 

@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import bcrypt from 'bcrypt';
-import prisma from '../../lib/prismadb';
 import { getServerSession } from 'next-auth/next';
+
+// [ ]internal import
+import prisma from '../../lib/prismadb';
 
 export async function POST(req: NextRequest) {
 	const body = await req.json();
@@ -14,7 +16,7 @@ export async function POST(req: NextRequest) {
 				email,
 				name,
 				hashedPassword,
-				favoriteIds: 'bar',
+				favoriteIds: 'foo',
 			},
 		});
 		return NextResponse.json(user);

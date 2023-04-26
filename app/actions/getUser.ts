@@ -27,6 +27,12 @@ export default async function gerUser() {
 
 		console.log(user);
 
+		// return {
+		// 	...user,
+		// 	createdAt: user.createdAt.toISOString(),
+		// 	updatedAt: user.updatedAt.toISOString(),
+		// 	emailVerified: user.emailVerified?.toISOString() || null,
+		// };
 		return user;
 	} catch (error) {
 		return;

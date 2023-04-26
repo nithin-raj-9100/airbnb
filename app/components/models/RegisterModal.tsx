@@ -2,9 +2,10 @@
 import axios from 'axios';
 import { AiFillGithub } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
-import { useState, useCallback } from 'react';
-import { useForm, FieldValue, SubmitHandler } from 'react-hook-form';
+import { useState } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { signIn } from 'next-auth/react';
 
 // [ ]internal imports
 import { useRegisterModal } from '@/app/hooks/useRegisterModal  ';
@@ -90,14 +91,14 @@ const RegisterModal = () => {
 			<Button
 				outline
 				label='Continue with Google'
-				onClick={() => {}}
+				onClick={() => signIn('google')}
 				disabled={isLoading}
 				icon={FcGoogle}
 			/>
 			<Button
 				outline
 				label='Continue with Github'
-				onClick={() => {}}
+				onClick={() => signIn('github')}
 				disabled={isLoading}
 				icon={AiFillGithub}
 			/>

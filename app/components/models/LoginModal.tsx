@@ -34,7 +34,6 @@ const LoginModal = () => {
 		},
 	});
 
-	// @ts-ignore
 	const onSubmit: SubmitHandler<any> = (data: any) => {
 		setIsLoading(true);
 
@@ -90,14 +89,14 @@ const LoginModal = () => {
 			<Button
 				outline
 				label='Continue with Google'
-				onClick={() => {}}
+				onClick={() => signIn('google')}
 				disabled={isLoading}
 				icon={FcGoogle}
 			/>
 			<Button
 				outline
 				label='Continue with Github'
-				onClick={() => {}}
+				onClick={() => signIn('github')}
 				disabled={isLoading}
 				icon={AiFillGithub}
 			/>

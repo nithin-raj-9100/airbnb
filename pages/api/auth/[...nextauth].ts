@@ -20,7 +20,6 @@ export const authOptions: AuthOptions = {
 			clientSecret: process.env.GOOGLE_SECRET as string,
 		}),
 
-		// @ts-ignore
 		CredentialsProvider({
 			name: 'Credentials',
 			credentials: {

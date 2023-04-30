@@ -35,7 +35,7 @@ const UserMenu: React.FC<Props> = ({ user }) => {
 					Airbnb your home
 				</div>
 				{/* TODO */}
-				{/* <BiGlobe size={19} className=''  /> */}
+				{/* <BiGlobe size={19} className=''/> */}
 				<div
 					onClick={handleOpen}
 					className='flex cursor-pointer flex-row items-center gap-3 rounded-full border-[1px] border-neutral-200 p-3 transition hover:shadow-md md:px-2 md:py-1'

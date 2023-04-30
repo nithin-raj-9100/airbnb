@@ -33,6 +33,7 @@ export default async function gerUser() {
 		// 	updatedAt: user.updatedAt.toISOString(),
 		// 	emailVerified: user.emailVerified?.toISOString() || null,
 		// };
+		// @ts-ignore
 		return user;
 	} catch (error) {
 		return;

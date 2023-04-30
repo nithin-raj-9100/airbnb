@@ -102,7 +102,7 @@ const LoginModal = () => {
 			/>
 			<div className='mt-5 text-center  text-neutral-500'>
 				<div className='flex flex-row items-center justify-center gap-2'>
-					<div className=''>Already have an account ? </div>
+					<div className=''>New here register</div>
 					<div
 						className='inline-block cursor-pointer text-neutral-800
 						transition-all  duration-200 hover:underline
@@ -113,9 +113,9 @@ const LoginModal = () => {
 						// 	backgroundPosition: '0 100%',
 						// 	backgroundRepeat: 'repeat-x',
 						// }}
-						onClick={registerModel.onClose}
+						onClick={loginModal.onClose}
 					>
-						Login
+						here
 					</div>
 				</div>
 			</div>

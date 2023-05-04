@@ -6,6 +6,7 @@ import Container from '../Container';
 import Logo from './Logo';
 import Search from './Search';
 import UserMenu from './UserMenu';
+import Categories from './Categories';
 
 type Props = {
 	user?: User | null;
@@ -28,6 +29,10 @@ const Navbar: React.FC<Props> = ({ user }: { user?: User | null }) => {
 					</div>
 				</Container>
 			</div>
+			<>
+				{/* @ts-ignore */}
+				<Categories />
+			</>
 		</div>
 	);
 };

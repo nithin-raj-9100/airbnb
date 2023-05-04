@@ -18,7 +18,7 @@ const Input: React.FC<InputProps> = ({
 	register,
 	id,
 	label,
-	type = 'text',
+	type,
 	disabled = false,
 	formatPrice = false,
 	required = false,
@@ -52,7 +52,7 @@ const Input: React.FC<InputProps> = ({
 				disabled={disabled}
 				{...register(id, { required })}
 				placeholder=' '
-				type={type}
+				type={id}
 				aria-placeholder='Enter Email'
 				className={`
 				focus:border-primary-500

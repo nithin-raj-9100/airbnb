@@ -36,9 +36,14 @@ const RegisterModal = () => {
 		setIsLoading(true);
 
 		try {
+			if (!data.email.includes('@') || !data.email.includes('.')) {
+				toast.error('missing @ or . in emai');
+				return;
+			}
 			const response = await axios
 				.post('/api/register', data)
 				.then(() => registerModel.onClose());
+			toast.success('SignIn Successful');
 			console.log(response);
 		} catch (error: any) {
 			toast.error('Something went wrong');

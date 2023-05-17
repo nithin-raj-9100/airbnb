@@ -10,6 +10,7 @@ import MenuItem from './MenuItem';
 import { useRegisterModal } from '@/app/hooks/useRegisterModal  ';
 import { useLoginModal } from '@/app/hooks/useLoginModal  ';
 import { SafeUser } from '@/app/types  ';
+import { useRentModal } from '@/app/hooks/useRentModal  ';
 
 type Props = {
 	user?: SafeUser | null;
@@ -18,18 +19,28 @@ type Props = {
 const UserMenu: React.FC<Props> = ({ user }) => {
 	const registerModel = useRegisterModal();
 	const loginModal = useLoginModal();
+	const rentModal = useRentModal();
 	const [isOpen, setisOpen] = useState(false);
 
 	const handleOpen = useCallback(() => {
 		setisOpen(open => !open);
-		console.log(isOpen);
 	}, [isOpen]);
+
+	const onRent = useCallback(() => {
+		// TODO
+		if (!user) {
+			return loginModal.onOpen();
+		}
+		rentModal.onOpen();
+
+		// TODO handle user when logged in
+	}, [user, loginModal, rentModal]);
 
 	return (
 		<div className='relative'>
 			<div className='flex flex-row items-center justify-center gap-4'>
 				<div
-					onClick={() => {}}
+					onClick={onRent}
 					className='hidden cursor-pointer rounded-full px-4 py-3 text-center text-sm font-semibold transition hover:bg-white md:block '
 				>
 					Airbnb your home
@@ -65,7 +76,7 @@ const UserMenu: React.FC<Props> = ({ user }) => {
 									label='My Properties'
 								/>
 								<MenuItem
-									onClick={() => {}}
+									onClick={rentModal.onOpen}
 									label='Airbnb your Home'
 								/>
 								<hr />

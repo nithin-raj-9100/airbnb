@@ -7,6 +7,7 @@ import Navbar from './components/navbar/Navbar';
 import './globals.css';
 import LoginModal from './components/models/LoginModal';
 import gerUser from './actions/getUser';
+import RentModal from './components/models/RentModal';
 
 export const metadata = {
 	title: 'Holiday Homes & Apartment Rentals - Airbnb - Airbnb',
@@ -27,6 +28,7 @@ export default async function RootLayout({
 		<html lang='en'>
 			<body className={fonts.className}>
 				<ToasterProvider />
+				<RentModal />
 				<RegisterModal />
 				<LoginModal />
 				{/* @ts-ignore */}

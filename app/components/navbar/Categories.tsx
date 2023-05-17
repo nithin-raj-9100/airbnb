@@ -92,7 +92,7 @@ export const categories = [
 		description: 'this is Barns',
 	},
 	{
-		label: 'Treding',
+		label: 'Trending',
 		icon: MdOutlineLocalFireDepartment,
 		description: 'this is Trending',
 	},

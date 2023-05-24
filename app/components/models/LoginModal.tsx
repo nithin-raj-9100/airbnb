@@ -1,5 +1,4 @@
 'use client';
-import axios from 'axios';
 import { AiFillGithub } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
 import { useState, useCallback } from 'react';
@@ -41,7 +40,6 @@ const LoginModal = () => {
 			...data,
 			redirect: false,
 		}).then(callback => {
-			console.log(callback);
 			setIsLoading(false);
 			if (callback?.ok) {
 				toast.success('Login successful');

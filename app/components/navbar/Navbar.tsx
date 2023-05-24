@@ -7,12 +7,13 @@ import Logo from './Logo';
 import Search from './Search';
 import UserMenu from './UserMenu';
 import Categories from './Categories';
+import { SafeUser } from '@/app/types  ';
 
 type Props = {
-	user?: User | null;
+	user?: SafeUser | null;
 };
 
-const Navbar: React.FC<Props> = ({ user }: { user?: User | null }) => {
+const Navbar: React.FC<Props> = ({ user }: { user?: SafeUser | null }) => {
 	console.log(user);
 
 	return (
@@ -24,13 +25,11 @@ const Navbar: React.FC<Props> = ({ user }: { user?: User | null }) => {
 						<span className='rounded-full px-6 '>
 							<Search />
 						</span>
-						{/* @ts-ignore */}
 						<UserMenu user={user} />
 					</div>
 				</Container>
 			</div>
 			<>
-				{/* @ts-ignore */}
 				<Categories />
 			</>
 		</div>

@@ -92,10 +92,9 @@ const RentModal = () => {
 							<CategoryInput
 								label={category.label}
 								icon={category.icon}
-								// @ts-ignore
 								description={category.description}
-								// @ts-ignore
-								onClick={categoryWatch =>
+								//@ts-ignore
+								onClick={(categoryWatch: any) =>
 									setCustomValue('category', categoryWatch)
 								}
 								selected={categoryWatch === category.label}
@@ -106,6 +105,14 @@ const RentModal = () => {
 			</div>
 		</>
 	);
+
+	if (step === STEPS.LOCATION) {
+		bodyContent = (
+			<>
+				<div className=''>Location</div>
+			</>
+		);
+	}
 
 	return (
 		<div>

@@ -22,19 +22,17 @@ export default async function gerUser() {
 		});
 
 		if (!user) {
-			return;
+			return null;
 		}
 
 		console.log(user);
 
-		// return {
-		// 	...user,
-		// 	createdAt: user.createdAt.toISOString(),
-		// 	updatedAt: user.updatedAt.toISOString(),
-		// 	emailVerified: user.emailVerified?.toISOString() || null,
-		// };
-		// @ts-ignore
-		return user;
+		return {
+			...user,
+			createdAt: user.createdAt.toISOString(),
+			updatedAt: user.updatedAt.toISOString(),
+			emailVerified: user.emailVerified?.toISOString() || null,
+		};
 	} catch (error) {
 		return;
 	}

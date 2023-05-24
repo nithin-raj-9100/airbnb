@@ -1,5 +1,5 @@
 'use client';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, ReactElement } from 'react';
 import { IoMdClose } from 'react-icons/io';
 
 // [ ]internal imports
@@ -11,10 +11,10 @@ type ModalProps = {
 	onSubmit?: () => void;
 	title: string;
 	body: React.ReactElement;
-	footer: React.ReactElement;
+	footer?: React.ReactElement;
 	actionLabel: string;
 	disabled?: boolean;
-	secondaryAction: () => void;
+	secondaryAction?: () => void;
 	secondaryActionLabel?: string;
 };
 
@@ -38,13 +38,14 @@ const Modal: React.FC<ModalProps> = ({
 
 	const handleClose = useCallback(() => {
 		if (disabled) {
-			return;
+			return null;
 		}
 		setShowModel(false);
 
 		setTimeout(() => {
-			// @ts-ignore
-			onClose();
+			if (onClose) {
+				onClose();
+			}
 		}, 300);
 	}, [disabled, onClose]);
 
@@ -52,8 +53,10 @@ const Modal: React.FC<ModalProps> = ({
 		if (disabled) {
 			return;
 		}
-		// @ts-ignore
-		onSubmit();
+
+		if (onSubmit) {
+			onSubmit();
+		}
 	}, [disabled, onSubmit]);
 
 	const handleSecondaryAction = useCallback(() => {
@@ -98,7 +101,6 @@ const Modal: React.FC<ModalProps> = ({
 
 							<div className='flex flex-col gap-2 p-6'>
 								<div className='flex w-full flex-row items-center gap-4'>
-									{/* @ts-ignore */}
 									{secondaryAction &&
 										secondaryActionLabel && (
 											<Button

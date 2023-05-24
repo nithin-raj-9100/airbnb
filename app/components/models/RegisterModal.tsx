@@ -13,11 +13,9 @@ import Modal from './Modal';
 import Heading from '../Heading';
 import Input from '../inputs/Input';
 import Button from '../Button';
-import { useLoginModal } from '@/app/hooks/useLoginModal  ';
 
 const RegisterModal = () => {
 	const registerModel = useRegisterModal();
-	const loginModal = useLoginModal();
 	const [isLoading, setIsLoading] = useState(false);
 
 	const {
@@ -44,7 +42,6 @@ const RegisterModal = () => {
 				.post('/api/register', data)
 				.then(() => registerModel.onClose());
 			toast.success('SignIn Successful');
-			console.log(response);
 		} catch (error: any) {
 			toast.error('Something went wrong');
 			console.log(error);

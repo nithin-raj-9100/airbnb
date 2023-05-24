@@ -31,7 +31,6 @@ export default async function RootLayout({
 				<RentModal />
 				<RegisterModal />
 				<LoginModal />
-				{/* @ts-ignore */}
 				<Navbar user={user} />
 				{children}
 			</body>

@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import bcrypt from 'bcrypt';
-import { getServerSession } from 'next-auth/next';
 
 // [ ]internal import
 import prisma from '../../lib/prismadb';

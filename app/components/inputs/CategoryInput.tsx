@@ -20,7 +20,8 @@ const CategoryInput: React.FC<Props> = ({
 }) => {
 	return (
 		<div
-			onClick={() => onClick()}
+			// @ts-ignore
+			onClick={() => onClick(label)}
 			className={`
 		flex cursor-pointer gap-3 rounded-xl border-2  p-4 transition hover:border-black 
 		${selected ? 'border-black' : 'border-neutral-200'}

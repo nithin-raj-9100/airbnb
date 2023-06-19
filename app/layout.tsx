@@ -6,7 +6,7 @@ import RegisterModal from './components/models/RegisterModal';
 import Navbar from './components/navbar/Navbar';
 import './globals.css';
 import LoginModal from './components/models/LoginModal';
-import gerUser from './actions/getUser';
+import getUser from './actions/getUser';
 import RentModal from './components/models/RentModal';
 
 export const metadata = {
@@ -23,7 +23,7 @@ export default async function RootLayout({
 }: {
 	children: React.ReactNode;
 }) {
-	const user = await gerUser();
+	const user = await getUser();
 	return (
 		<html lang='en'>
 			<body className={fonts.className}>

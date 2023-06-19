@@ -8,7 +8,7 @@ export async function getSession() {
 	return await getServerSession(authOptions);
 }
 
-export default async function gerUser() {
+export default async function getUser() {
 	try {
 		const session = await getSession();
 		if (!session?.user?.email) {
@@ -24,8 +24,6 @@ export default async function gerUser() {
 		if (!user) {
 			return null;
 		}
-
-		console.log(user);
 
 		return {
 			...user,

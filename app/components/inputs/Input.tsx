@@ -52,7 +52,7 @@ const Input: React.FC<InputProps> = ({
 				disabled={disabled}
 				{...register(id, { required })}
 				placeholder=' '
-				type={id}
+				type={type}
 				aria-placeholder='Enter Email'
 				className={`
 				focus:border-primary-500

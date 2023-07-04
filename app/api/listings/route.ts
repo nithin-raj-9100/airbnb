@@ -40,6 +40,6 @@ export async function POST(req: NextRequest) {
 			userId: currentUser.id,
 		},
 	});
-	console.log('listing is ', listing);
+
 	return NextResponse.json(listing);
 }

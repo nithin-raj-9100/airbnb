@@ -71,7 +71,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
 						<Image
 							alt='Listings'
 							src={data.imageSrc}
-							className='h-full w-full object-cover transition '
+							className='h-full w-full object-cover transition group-hover:scale-110 '
 							fill
 						/>
 						<div className='absolute right-3 top-3'>

@@ -6,7 +6,7 @@ import prisma from '../../lib/prismadb';
 
 export async function POST(req: NextRequest) {
 	const body = await req.json();
-	const { email, name, password } = body;
+	const { favoriteIds, email, name, password } = body;
 	const hashedPassword = await bcrypt.hash(password, 12);
 
 	try {
@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
 				email,
 				name,
 				hashedPassword,
-				favoriteIds: 'foo',
+				favoriteIds,
 			},
 		});
 		return NextResponse.json(user);

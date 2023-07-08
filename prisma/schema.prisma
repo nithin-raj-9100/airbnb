@@ -3,13 +3,12 @@ generator client {
 }
 
 datasource db {
-    provider     = "mysql"
-    url          = env("DATABASE_URL")
-    relationMode = "prisma"
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
 }
 
 model User {
-    id             String        @id @default(uuid())
+    id             String        @id @default(cuid())
     name           String?
     email          String?       @unique
     emailVerified  DateTime?
@@ -17,14 +16,14 @@ model User {
     hashedPassword String?
     createdAt      DateTime      @default(now())
     updatedAt      DateTime      @updatedAt
-    favoriteIds    String?
+    favoriteIds    String[]
     accounts       Account[]
     listings       Listing[]
     reservations   Reservation[]
 }
 
 model Account {
-    id                String  @id @default(uuid())
+    id                String  @id @default(cuid())
     userId            String
     type              String
     provider          String
@@ -43,7 +42,7 @@ model Account {
 }
 
 model Listing {
-    id            String        @id @default(uuid())
+    id            String        @id @default(cuid())
     title         String
     description   String
     imageSrc      String
@@ -62,7 +61,7 @@ model Listing {
 }
 
 model Reservation {
-    id         String   @id @default(uuid())
+    id         String   @id @default(cuid())
     userId     String
     listingId  String
     startDate  DateTime

@@ -33,14 +33,21 @@ const useFavorite = ({ listingId, currentUser }: IUserFavorite) => {
 				let request: () => Promise<any>;
 				if (hasFavorited) {
 					request = () => axios.delete(`/api/favorites/${listingId}`);
-					console.log('delete');
+					toast.promise(request(), {
+						loading: 'Removing from favorites...',
+						success: 'Removed!',
+						error: 'Something went wrong!',
+					});
 				} else {
 					request = () => axios.post(`/api/favorites/${listingId}`);
-					console.log('post');
+					toast.promise(request(), {
+						loading: 'Adding to favorites...',
+						success: 'Added!',
+						error: 'Something went wrong!',
+					});
 				}
 				await request();
 				router.refresh();
-				toast.success('Success!');
 			} catch (error: any) {
 				console.log('error', error);
 				toast.error('Something went wrong!');

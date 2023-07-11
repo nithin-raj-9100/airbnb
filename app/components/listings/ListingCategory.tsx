@@ -13,12 +13,6 @@ const ListingCategory: React.FC<ListingCategoryProps> = ({
 	icon: Icon,
 	label,
 }) => {
-	console.log({
-		description,
-		Icon,
-		label,
-	});
-
 	return (
 		<div className='flex flex-col gap-6'>
 			<div className='flex items-center gap-4 '>

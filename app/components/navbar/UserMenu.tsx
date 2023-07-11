@@ -24,7 +24,7 @@ const UserMenu: React.FC<Props> = ({ user }) => {
 
 	const handleOpen = useCallback(() => {
 		setisOpen(open => !open);
-	}, [isOpen]);
+	}, []);
 
 	const onRent = useCallback(() => {
 		// TODO

@@ -3,20 +3,20 @@
 // [ ]internal imports
 import Container from '@/app/components/Container  ';
 import { categories } from '@/app/components/navbar/Categories  ';
-// import { SafeUser } from '@/app/types  ';
 import { Listing, Reservation, User } from '@prisma/client';
 
 import ListingHead from '@/app/components/listings/ListingHead  ';
 
 import { useMemo } from 'react';
 import ListingInfo from '@/app/components/listings/ListingInfo  ';
+import { SafeListing, SafeUser } from '@/app/types  ';
 
 interface ListingClientProps {
 	reservation?: Reservation[];
-	listings: Listing & {
-		user: User;
+	listings: SafeListing & {
+		user: SafeUser;
 	};
-	currentUser?: User | null;
+	currentUser?: SafeUser | null;
 }
 
 const ListingClient: React.FC<ListingClientProps> = ({
@@ -37,7 +37,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
 							imageSrc={listings?.imageSrc}
 							locaionValue={listings?.locationValue}
 							currentUser={currentUser}
-							id={currentUser?.id}
+							id={listings?.id}
 						/>
 
 						<div className='mt-6 grid grid-cols-1 md:grid-cols-7 md:gap-10'>

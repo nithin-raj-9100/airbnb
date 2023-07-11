@@ -11,8 +11,8 @@ interface ListingHeadProps {
 	title: string;
 	locaionValue: string;
 	imageSrc: string;
-	id: string | null | undefined;
-	currentUser?: User | SafeUser | null;
+	id: string;
+	currentUser?: SafeUser | null;
 }
 
 const ListingHead: React.FC<ListingHeadProps> = ({
@@ -42,7 +42,6 @@ const ListingHead: React.FC<ListingHeadProps> = ({
 					className='w-full object-cover '
 				/>
 				<div className='absolute right-5 top-5'>
-					{/* @ts-ignore */}
 					<HeartButton listingId={id} currentUser={currentUser} />
 				</div>
 			</div>

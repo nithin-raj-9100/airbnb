@@ -7,7 +7,21 @@ export default async function getListings() {
 				createdAt: 'desc',
 			},
 		});
+		//
 
-		return listings;
-	} catch (error) {}
+		// const test = await prisma.reservation.findMany({
+		// 	where: {},
+		// });
+
+		//
+		const safeListings = listings.map(listing => ({
+			...listing,
+			createdAt: listing.createdAt.toISOString(),
+		}));
+
+		return safeListings;
+	} catch (error: any) {
+		console.log(error);
+		throw new Error('Could not get listings');
+	}
 }

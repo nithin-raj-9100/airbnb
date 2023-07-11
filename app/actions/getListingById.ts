@@ -21,7 +21,17 @@ export default async function getListingById(params: Iparams) {
 			return null;
 		}
 
-		return listing;
+		return {
+			...listing,
+			createdAt: listing.createdAt.toISOString(),
+			user: {
+				...listing.user,
+				createdAt: listing.user.createdAt.toISOString(),
+				updatedAt: listing.user.updatedAt.toISOString(),
+				emailVerified:
+					listing.user.emailVerified?.toISOString() || null,
+			},
+		};
 	} catch (error) {
 		throw new Error('Error occured');
 	}

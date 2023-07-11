@@ -6,13 +6,14 @@ import { IconType } from 'react-icons';
 import Avatar from '../Avatar';
 import ListingCategory from './ListingCategory';
 import dynamic from 'next/dynamic';
+import { SafeUser } from '@/app/types  ';
 
 const Map = dynamic(() => import('../Map'), {
 	ssr: false,
 });
 
 interface ListingInfoProps {
-	user: User;
+	user: SafeUser;
 	description: string;
 	guestCount: number;
 	roomCount: number;

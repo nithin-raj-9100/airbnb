@@ -3,10 +3,10 @@
 // [ ]internal imports
 import Container from '@/app/components/Container  ';
 import { categories } from '@/app/components/navbar/Categories  ';
-import { Listing, Reservation, User } from '@prisma/client';
+
 import ListingHead from '@/app/components/listings/ListingHead  ';
 import ListingInfo from '@/app/components/listings/ListingInfo  ';
-import { SafeListing, SafeUser } from '@/app/types  ';
+import { SafeListing, SafeReservation, SafeUser } from '@/app/types  ';
 import { useLoginModal } from '@/app/hooks/useLoginModal  ';
 import ListingReservation from '@/app/components/listings/ListingReservation  ';
 
@@ -17,7 +17,7 @@ import axios from 'axios';
 import { toast } from 'react-hot-toast';
 
 interface ListingClientProps {
-	reservations?: Reservation[];
+	reservations?: SafeReservation[];
 	listings: SafeListing & {
 		user: SafeUser;
 	};
@@ -32,7 +32,7 @@ const initialDateRange = {
 
 const ListingClient: React.FC<ListingClientProps> = ({
 	listings,
-	reservations = [],
+	reservations,
 	currentUser,
 }) => {
 	const loginModel = useLoginModal();
@@ -42,7 +42,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
 	const disabledDates = useMemo(() => {
 		let dates: Date[] = [];
 
-		reservations.forEach(reservation => {
+		reservations?.forEach(reservation => {
 			const range = eachDayOfInterval({
 				start: new Date(reservation.startDate),
 				end: new Date(reservation.endDate),

@@ -26,7 +26,7 @@ const ListingReservation: React.FC<ListingReservationProps> = ({
 	return (
 		<div className='overflow-hidden rounded-xl border border-neutral-300 bg-white'>
 			<div className='flex flex-row items-center gap-1 p-4'>
-				<div className='text-2xl font-semibold'>$ {price}</div>
+				<div className='text-2xl font-semibold'>$ {totalPrice}</div>
 				<div className='font-light text-neutral-600'>per night</div>
 			</div>
 			<hr />

@@ -11,6 +11,7 @@ import { useRegisterModal } from '@/app/hooks/useRegisterModal  ';
 import { useLoginModal } from '@/app/hooks/useLoginModal  ';
 import { SafeUser } from '@/app/types  ';
 import { useRentModal } from '@/app/hooks/useRentModal  ';
+import { useRouter } from 'next/navigation';
 
 type Props = {
 	user?: SafeUser | null;
@@ -25,6 +26,8 @@ const UserMenu: React.FC<Props> = ({ user }) => {
 	const handleOpen = useCallback(() => {
 		setisOpen(open => !open);
 	}, []);
+
+	const router = useRouter();
 
 	const onRent = useCallback(() => {
 		// TODO
@@ -62,7 +65,10 @@ const UserMenu: React.FC<Props> = ({ user }) => {
 					<div className='flex cursor-pointer flex-col'>
 						{user ? (
 							<>
-								<MenuItem onClick={() => {}} label='My trips' />
+								<MenuItem
+									onClick={() => router.push('/trips')}
+									label='My trips'
+								/>
 								<MenuItem
 									onClick={() => {}}
 									label='My Favourites'

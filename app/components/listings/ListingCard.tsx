@@ -5,7 +5,6 @@ import { format } from 'date-fns';
 
 // [ ]internal imports
 import { SafeListing, SafeReservation, SafeUser } from '@/app/types  ';
-import { Listing, Reservation } from '@prisma/client';
 import useCountries from '@/app/hooks/useCountries  ';
 import { useCallback, useMemo } from 'react';
 import Image from 'next/image';
@@ -59,6 +58,8 @@ const ListingCard: React.FC<ListingCardProps> = ({
 
 		return `${format(start, 'PP')} - ${format(end, 'PP')}`;
 	}, [reservation]);
+
+	console.log(currentUser);
 
 	return (
 		<>

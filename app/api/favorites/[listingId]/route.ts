@@ -25,8 +25,6 @@ export async function POST(req: Request, { params }: { params: Iparams }) {
 
 	favoriteIds.push(listingId);
 
-	console.log('favoriteIds', favoriteIds);
-
 	const user = await prisma.user.update({
 		where: {
 			id: currentUser?.id,
@@ -42,7 +40,6 @@ export async function POST(req: Request, { params }: { params: Iparams }) {
 // TODO
 
 export async function DELETE(req: Request, { params }: { params: Iparams }) {
-	console.log('delete');
 	const currentUser = await getUser();
 
 	if (!currentUser) {

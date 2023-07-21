@@ -1,13 +1,13 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import { useCallback, useState } from 'react';
+import axios from 'axios';
+import { toast } from 'react-hot-toast';
 
 import Container from '../components/Container';
 import Heading from '../components/Heading';
 import { SafeReservation, SafeUser } from '../types';
-import { useCallback, useState } from 'react';
-import axios from 'axios';
-import { toast } from 'react-hot-toast';
 import ListingCard from '../components/listings/ListingCard';
 
 interface TripsClientProps {
@@ -60,6 +60,7 @@ const TripsClient: React.FC<TripsClientProps> = ({
 							onAction={onCancel}
 							disabled={deletionId === reservation.id}
 							actionLabel='Cancel Reservation'
+							currentUser={currentUser}
 						/>
 					))}
 				</div>

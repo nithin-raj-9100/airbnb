@@ -1,14 +1,14 @@
 'use client';
 
+import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { useCallback, useState } from 'react';
-import axios from 'axios';
 import { toast } from 'react-hot-toast';
 
 import Container from '../components/Container';
 import Heading from '../components/Heading';
-import { SafeReservation, SafeUser } from '../types';
 import ListingCard from '../components/listings/ListingCard';
+import { SafeReservation, SafeUser } from '../types';
 
 interface TripsClientProps {
 	reservations: SafeReservation[];
@@ -26,19 +26,24 @@ const TripsClient: React.FC<TripsClientProps> = ({
 		(id: string) => {
 			setDeletionId(id);
 
-			axios
-				.delete(`/api/reservations/${id}`)
-				.then(() => {
-					toast.success('Reservation cancelled');
-					router.refresh();
-				})
-				.catch((err: any) => {
-					toast.error(err?.response?.data?.error?.message);
-					console.log(err);
-				})
-				.finally(() => {
-					setDeletionId('');
-				});
+			const request = () =>
+				axios
+					.delete(`/api/reservations/${id}`)
+					.then(() => {
+						router.refresh();
+					})
+					.catch((err: any) => {
+						toast.error(err.name);
+					})
+					.finally(() => {
+						setDeletionId('');
+					});
+
+			toast.promise(request(), {
+				loading: 'Cancelling reservation...',
+				success: 'Reservation cancelled',
+				error: 'Could not cancel reservation',
+			});
 		},
 		[router],
 	);

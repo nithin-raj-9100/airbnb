@@ -59,8 +59,6 @@ const ListingCard: React.FC<ListingCardProps> = ({
 		return `${format(start, 'PP')} - ${format(end, 'PP')}`;
 	}, [reservation]);
 
-	console.log(currentUser);
-
 	return (
 		<>
 			<div

@@ -9,6 +9,7 @@ import Container from '../components/Container';
 import Heading from '../components/Heading';
 import ListingCard from '../components/listings/ListingCard';
 import { SafeReservation, SafeUser } from '../types';
+import { th } from 'date-fns/locale';
 
 interface TripsClientProps {
 	reservations: SafeReservation[];
@@ -32,8 +33,8 @@ const TripsClient: React.FC<TripsClientProps> = ({
 					.then(() => {
 						router.refresh();
 					})
-					.catch((err: any) => {
-						toast.error(err.name);
+					.catch(error => {
+						throw new Error(error.response.data.message);
 					})
 					.finally(() => {
 						setDeletionId('');
@@ -42,10 +43,10 @@ const TripsClient: React.FC<TripsClientProps> = ({
 			toast.promise(request(), {
 				loading: 'Cancelling reservation...',
 				success: 'Reservation cancelled',
-				error: 'Could not cancel reservation',
+				error: 'Failed to cancel reservation',
 			});
 		},
-		[router],
+		[router, setDeletionId],
 	);
 
 	return (

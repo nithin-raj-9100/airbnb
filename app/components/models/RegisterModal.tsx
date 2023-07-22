@@ -13,9 +13,12 @@ import Modal from './Modal';
 import Heading from '../Heading';
 import Input from '../inputs/Input';
 import Button from '../Button';
+import LoginModal from './LoginModal';
+import { useLoginModal } from '@/app/hooks/useLoginModal  ';
 
 const RegisterModal = () => {
 	const registerModel = useRegisterModal();
+	const loginModal = useLoginModal();
 	const [isLoading, setIsLoading] = useState(false);
 
 	const {
@@ -38,9 +41,10 @@ const RegisterModal = () => {
 				toast.error('missing @ or . in emai');
 				return;
 			}
-			const response = await axios
-				.post('/api/register', data)
-				.then(() => registerModel.onClose());
+			axios.post('/api/register', data).then(() => {
+				registerModel.onClose();
+				loginModal.onOpen();
+			});
 			toast.success('SignIn Successful');
 		} catch (error: any) {
 			toast.error('Something went wrong');

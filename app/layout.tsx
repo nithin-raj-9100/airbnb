@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import { Nunito } from 'next/font/google';
 
 // [ ]internal importss
@@ -28,6 +29,7 @@ export default async function RootLayout({
 		<html lang='en'>
 			<body className={fonts.className}>
 				<ToasterProvider />
+				<Analytics />
 				<RentModal />
 				<RegisterModal />
 				<LoginModal />

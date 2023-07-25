@@ -78,7 +78,9 @@ const UserMenu: React.FC<Props> = ({ user }) => {
 									label='My reservations'
 								/>
 								<MenuItem
-									onClick={() => router.push('/properties')}
+									onClick={() => {
+										// router.push('/properties');
+									}}
 									label='My Properties'
 								/>
 								<MenuItem

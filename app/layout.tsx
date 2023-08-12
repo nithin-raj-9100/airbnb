@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { Analytics } from '@vercel/analytics/react';
 import { Nunito } from 'next/font/google';
 

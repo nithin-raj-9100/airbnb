@@ -9,7 +9,8 @@ interface HomeProps {
 }
 
 const Home = async ({ searchParams }: HomeProps) => {
-	const listings = await getListings(searchParams || {});
+	const listings = await getListings(searchParams);
+	console.log(searchParams);
 
 	const currentUser = await getUser();
 
@@ -20,6 +21,7 @@ const Home = async ({ searchParams }: HomeProps) => {
 			</div>
 		);
 	}
+
 	return (
 		<div className=''>
 			<Container>

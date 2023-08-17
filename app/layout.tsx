@@ -11,6 +11,7 @@ import './globals.css';
 import LoginModal from './components/models/LoginModal';
 import getUser from './actions/getUser';
 import RentModal from './components/models/RentModal';
+import SearchModal from './components/models/SearchModal';
 
 export const metadata = {
 	title: 'Holiday Homes & Apartment Rentals - Airbnb - Airbnb',
@@ -31,6 +32,7 @@ export default async function RootLayout({
 		<html lang='en'>
 			<body className={fonts.className}>
 				<ToasterProvider />
+				<SearchModal />
 				<Analytics />
 				<RentModal />
 				<RegisterModal />

@@ -44,12 +44,12 @@ export const categories = [
 	{
 		label: 'Pools',
 		icon: TbPool,
-		description: 'this is beach',
+		description: 'this is Pools',
 	},
 	{
 		label: 'Islands',
 		icon: GiIsland,
-		description: 'this is beach',
+		description: 'this is Islands',
 	},
 	{
 		label: 'Lakes',
@@ -69,7 +69,7 @@ export const categories = [
 	{
 		label: 'Campings',
 		icon: GiCampingTent,
-		description: 'this is Castle',
+		description: 'this is Camping in forest',
 	},
 	{
 		label: 'Arctics',

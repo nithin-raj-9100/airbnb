@@ -178,7 +178,7 @@ const RentModal = () => {
 				<div className='flex flex-col gap-8'>
 					<Heading
 						title='Share some basics about your place'
-						subtitle='How many guests do you allowh'
+						subtitle='How many guests do you allow'
 					/>
 					<Counter
 						title='Guests'

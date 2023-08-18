@@ -119,13 +119,26 @@ Once the application is running, you can:
 
 ### Environment Variables 
 in .env file fill the below environment variable
-- `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME`
-- `CLOUDINARY_API_SECRET`
-- `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME`
-- `DATABASE_URL=<your supabase url>` or any other posrgresql database url
+- `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=<your cloudinary cloud name>`
+- `CLOUDINARY_API_SECRET=<your cloudinary api secret>`
+- `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=<your cloudinary cloud name>`
+- `DATABASE_URL=<your supabase url>`
 - `GOOGLE_SECRET=<your google secret>`
 - `GOOGLE_ID=<your google id>`
 - `GITHUB_SECRET=<your github secret>`
 - `GITHUB_ID=<your github id>`
 - `NEXTAUTH_SECRET=<your next auth secret>`
 
+
+## Screenshots
+
+- Desktop View
+
+![Desktop View](public/screenshots/desktop_view.png)
+
+- Mobile View
+
+![Mobile View](public/screenshots/mobile_view.png)
+
+
+## Credits to original awesome website [airbnb](https://www.airbnb.co.in/)

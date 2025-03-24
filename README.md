@@ -6,7 +6,7 @@ This is a clone of popular website [airbnb](https://www.airbnb.co.in/)
 
 Welcome to my Airbnb clone project! This project aims to replicate the core features of the Airbnb website, allowing users to browse and book accommodations. Users can also create and list their own hotels, manage reservations, and more.
 
-Airbnb if of the most popular website which is known for it's beautiful UI/UX such as :
+Airbnb is one of the most popular website which is known for it's beautiful UI/UX such as :
 1. Carousels 
 2. Hover Effects
 3. Models 
